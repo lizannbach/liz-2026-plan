@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --olive: 67 26% 44%;
+    --brown: 26 15% 21%;
+    --offwhite: 40 14% 86%;
+    --slate: 210 10% 34%;
+    --near-black: 345 12% 5%;
+    
+    --background: 40 18% 95%;
+    --foreground: 26 15% 21%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 26 15% 21%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 26 15% 21%;
+
+    --primary: 67 26% 44%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 36 16% 90%;
+    --secondary-foreground: 26 15% 21%;
+
+    --muted: 36 16% 90%;
+    --muted-foreground: 0 0% 67%;
+
+    --accent: 40 14% 86%;
+    --accent-foreground: 26 15% 21%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 36 14% 83%;
+    --input: 36 14% 83%;
+    --ring: 67 26% 44%;
+
+    --radius: 0.875rem;
+
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Jost', sans-serif;
+
+    --shadow-card: 0 1px 8px -2px hsl(26 15% 21% / 0.05);
+    --shadow-elevated: 0 4px 20px -6px hsl(26 15% 21% / 0.1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Checked state animations */
+.item-checked {
+  @apply opacity-40;
+}
+.item-checked .item-text {
+  text-decoration: line-through;
+  text-decoration-color: hsl(var(--primary));
+}
+
+/* Editable field styling */
+.editable-field {
+  @apply outline-none rounded px-1 -mx-1 transition-colors;
+}
+.editable-field:hover {
+  background: hsl(var(--primary) / 0.06);
+}
+.editable-field:focus {
+  background: hsl(var(--primary) / 0.1);
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
+}
+
+/* Progress bar */
+.prog-track {
+  @apply rounded-full overflow-hidden;
+  height: 5px;
+  background: hsl(var(--border));
+}
+.prog-fill {
+  height: 100%;
+  background: hsl(var(--primary));
+  @apply rounded-full;
+  transition: width 0.35s ease;
+}

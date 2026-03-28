@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(unzip -q \"/Users/elisabethbachmann/Downloads/my-life-compass-main.zip\" -d \"/Volumes/Liz Bachmann HD01/Claude Code\")",
+      "Bash(mv \"/Volumes/Liz Bachmann HD01/Claude Code/my-life-compass-main\"/* \"/Volumes/Liz Bachmann HD01/Claude Code/\")",
+      "Bash(mv \"/Volumes/Liz Bachmann HD01/Claude Code/my-life-compass-main\"/.[!.]* \"/Volumes/Liz Bachmann HD01/Claude Code/\")",
+      "Bash(rmdir \"/Volumes/Liz Bachmann HD01/Claude Code/my-life-compass-main\")",
+      "Bash(npm install:*)",
+      "Bash(bun install:*)",
+      "Read(//usr/local/bin/**)",
+      "Read(//Users/elisabethbachmann/.bun/bin/**)",
+      "Bash(grep -E \"^\\(node|npm|npx|bun\\)$\")",
+      "Read(//opt/homebrew/**)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npm --version)"
+    ]
+  }
+}
