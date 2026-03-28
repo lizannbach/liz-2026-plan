@@ -185,7 +185,7 @@ export function DailyDashboard({ dashboard, onUpdate, phases = [], checkedItems 
             <Briefcase className="w-4 h-4 text-primary" />
             <h3 className="text-[0.85rem] uppercase tracking-wider text-foreground font-bold">Client Work</h3>
           </div>
-          <p className="text-[0.78rem] text-muted-foreground italic mb-3">What's due or coming up for your clients today?</p>
+          <p className="text-[0.78rem] text-muted-foreground italic mb-3">Track what's due for each client — today or upcoming.</p>
 
           <div className="space-y-1.5 mb-3">
             {pendingClient.map(t => (
@@ -234,7 +234,16 @@ export function DailyDashboard({ dashboard, onUpdate, phases = [], checkedItems 
                 placeholder="What needs to be done"
                 className="text-[0.85rem] h-8 flex-1"
               />
-              <Button onClick={addClientTask} size="sm" variant="outline" className="h-8 px-2">
+            </div>
+            <div className="flex gap-2 items-center">
+              <label className="text-[0.72rem] text-muted-foreground flex-shrink-0">Due</label>
+              <Input
+                type="date"
+                value={newClientDue}
+                onChange={e => setNewClientDue(e.target.value)}
+                className="text-[0.82rem] h-8 flex-1"
+              />
+              <Button onClick={addClientTask} size="sm" variant="outline" className="h-8 px-2 flex-shrink-0">
                 <Plus className="w-3.5 h-3.5" />
               </Button>
             </div>
