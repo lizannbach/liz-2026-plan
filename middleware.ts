@@ -43,7 +43,7 @@ export default function middleware(request: Request) {
 <body>
   <div class="box">
     <h1>Liz's 2026 Plan</h1>
-    <p>Private — enter your password to continue</p>
+    <p>Private &mdash; enter your password to continue</p>
     <form method="GET">
       ${wrongPw ? '<p class="error">Wrong password — try again</p>' : ''}
       <input type="password" name="pw" placeholder="Password" autofocus autocomplete="current-password" />
@@ -54,6 +54,6 @@ export default function middleware(request: Request) {
 </html>`;
 
   return new Response(html, {
-    headers: { 'Content-Type': 'text/html' },
+    headers: { 'Content-Type': 'text/html; charset=utf-8' },
   });
 }
