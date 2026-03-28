@@ -33,6 +33,49 @@ const Index = () => {
           <div className="text-base text-muted-foreground mt-2 italic">{data.subtitle}</div>
           <div className="mt-4 text-base text-muted-foreground/70 leading-relaxed max-w-[580px] mx-auto">{data.tagline}</div>
           {allIds.length > 0 && <ProgressBar {...globalProgress} global />}
+          <div className="flex items-center justify-center gap-3 mt-4">
+            <button
+              onClick={() => {
+                const raw = localStorage.getItem('liz-2026-plan-react');
+                if (!raw) return;
+                const blob = new Blob([raw], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `liz-plan-backup-${new Date().toISOString().slice(0,10)}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+              }}
+              className="text-[0.72rem] text-muted-foreground/50 hover:text-muted-foreground underline underline-offset-2"
+            >
+              Export backup
+            </button>
+            <span className="text-muted-foreground/30 text-xs">·</span>
+            <label className="text-[0.72rem] text-muted-foreground/50 hover:text-muted-foreground underline underline-offset-2 cursor-pointer">
+              Restore backup
+              <input
+                type="file"
+                accept=".json"
+                className="hidden"
+                onChange={e => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+                  const reader = new FileReader();
+                  reader.onload = ev => {
+                    try {
+                      const text = ev.target?.result as string;
+                      JSON.parse(text); // validate
+                      localStorage.setItem('liz-2026-plan-react', text);
+                      window.location.reload();
+                    } catch {
+                      alert('Invalid backup file.');
+                    }
+                  };
+                  reader.readAsText(file);
+                }}
+              />
+            </label>
+          </div>
         </div>
 
         {/* Check-in banner */}
